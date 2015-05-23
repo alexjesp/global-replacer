@@ -14,6 +14,15 @@ describe('Global replacer', function () {
     expect(s).to.be.eql('_window.blah = 1;');
   });
 
+  it('should replace multiple instances of a simple global', function () {
+    var s = replacer('window.blah || window.hello;\nwindow.location.href;', {
+      replacements: {
+        'window': '_window'
+      }
+    });
+    expect(s).to.be.eql('_window.blah || _window.hello;\n_window.location.href;');
+  });
+
   it('should replace global properties', function () {
     var s = replacer('window.location.href;', {
       replacements: {
