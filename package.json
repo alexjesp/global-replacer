@@ -1,0 +1,24 @@
+{
+  "name": "global-replacer",
+  "version": "1.0.0",
+  "description": "A script that replaces specified global variables and their properties in javascript code",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "author": "Alexander Esp <alexjesp@gmail.com>",
+  "dependencies": {
+    "acorn": "^2.0.1",
+    "lodash": "^3.9.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "semistandard": "^4.2.0",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0",
+    "chai": "^2.3.0"
+  }
+}
