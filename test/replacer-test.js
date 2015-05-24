@@ -31,4 +31,39 @@ describe('Global replacer', function () {
     });
     expect(s).to.be.eql('window._l_ocation.href;');
   });
+
+  it('should replace multiple global properties', function () {
+    var s = replacer('' +
+      'window.location.href;\n' +
+      'window.location.reload(true);\n' +
+      'window.location.protocol;', {
+      replacements: {
+        'window.location': 'window._l_ocation'
+      }
+    });
+    expect(s).to.be.eql('' +
+      'window._l_ocation.href;\n' +
+      'window._l_ocation.reload(true);\n' +
+      'window._l_ocation.protocol;'
+    );
+  });
+
+  it('should replace multiple unique globals on the same line', function () {
+
+  });
+
+  it('should handle multiple global replacements', function () {
+
+  });
+
+  it('should handle multiple global and property replacements', function () {
+
+  });
+
+  /**
+   * TODO cases for:
+   * - global
+   * - (true || global) and further
+   * - var x = global.property;
+   */
 });
