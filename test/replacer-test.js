@@ -60,8 +60,17 @@ describe('Global replacer', function () {
 
   });
 
+  it('should replace properties on passed global variables', function () {
+    var s = replacer('(function (w) {\n  w.location.href = "www.howaboutthat.com";\n}) (window);', {
+      replacements: {
+        'window.location': 'window._l_ocation'
+      }
+    });
+    expect(s).to.be.eql('(function (w) {\n  w._l_ocation.href = "www.howaboutthat.com";\n}) (window);');
+  });
+
   /**
-   * TODO cases for:
+   * TODO specific cases for such cases:
    * - global
    * - (true || global) and further
    * - var x = global.property;
