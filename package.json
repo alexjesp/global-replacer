@@ -9,6 +9,9 @@
   "scripts": {
     "test": "make test"
   },
+  "semistandard": {
+    "ignore": ["./example*.js"]
+  },
   "author": "Alexander Esp <alexjesp@gmail.com>",
   "dependencies": {
     "acorn": "^2.0.1",
