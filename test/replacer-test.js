@@ -104,7 +104,13 @@ describe('Global replacer', function () {
   });
 
   it.skip('should handle global and it\'s property on the same line', function () {
-
+    var s = replacer('window.addEventListener(); window.location.href;', {
+      replacements: {
+        'window': '_window',
+        'window.location': 'window._l_ocation'
+      }
+    });
+    expect(s).to.be.eql('_window.addEventListener(); _window._l_ocation.href;');
   });
 
   it('should replace properties on passed global variables', function () {
@@ -114,6 +120,26 @@ describe('Global replacer', function () {
       }
     });
     expect(s).to.be.eql('(function (w) {\n  w._l_ocation.href = "www.howaboutthat.com";\n}) (window);');
+  });
+
+  describe('replacing multiple parts', function () {
+    it('should replace multiple parts of global expressions', function () {
+      var s = replacer('document.location.href;', {
+        replacements: {
+          'document.location': 'window._l_ocation'
+        }
+      });
+      expect(s).to.be.eql('window._l_ocation.href;');
+    });
+
+    it('shouldn\'t affect single part expressions', function () {
+      var s = replacer('document.location; document;', {
+        replacements: {
+          'document.location': 'window._l_ocation'
+        }
+      });
+      expect(s).to.be.eql('window._l_ocation; document;');
+    });
   });
 
   /**
