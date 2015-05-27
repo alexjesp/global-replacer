@@ -142,6 +142,17 @@ describe('Global replacer', function () {
     });
   });
 
+  describe('replacing square brackets', function () {
+    it('should replace string literal', function () {
+      var s = replacer('window["location"]', {
+        replacements: {
+          'window.location': 'window._l_ocation'
+        }
+      });
+      expect(s).to.be.eql('window["_l_ocation"]');
+    });
+  });
+
   /**
    * TODO specific cases for such cases:
    * - global
