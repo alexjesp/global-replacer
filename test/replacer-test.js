@@ -122,6 +122,16 @@ describe('Global replacer', function () {
     expect(s).to.be.eql('(function (w) {\n  w._l_ocation.href = "www.howaboutthat.com";\n}) (window);');
   });
 
+  it('should ignore passed globals that aren\'t used', function () {
+    var str = '(function () {\n document.addEventListener();\n}) (window);';
+    var s = replacer(str, {
+      replacements: {
+        'window.location': 'window._l_ocation'
+      }
+    });
+    expect(s).to.be.eql(str);
+  });
+
   describe('replacing multiple parts', function () {
     it('should replace multiple parts of global expressions', function () {
       var s = replacer('document.location.href;', {
