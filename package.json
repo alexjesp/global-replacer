@@ -14,12 +14,13 @@
     "test": "make test"
   },
   "semistandard": {
-    "ignore": ["./example*.js"]
+    "ignore": [
+      "./example*.js"
+    ]
   },
   "author": "Alexander Esp <alexjesp@gmail.com>",
   "dependencies": {
-    "acorn": "^2.0.1",
-    "lodash": "^3.9.1"
+    "acorn": "^2.0.1"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
