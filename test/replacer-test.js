@@ -150,6 +150,15 @@ describe('Global replacer', function () {
       });
       expect(s).to.be.eql('window._l_ocation; document;');
     });
+
+    it('shouldn\'t replace globals for properties other than the one specified', function () {
+      var s = replacer('document.location; document.styleSheets;', {
+        replacements: {
+          'document.location': 'window._l_ocation'
+        }
+      });
+      expect(s).to.be.eql('window._l_ocation; document.styleSheets;');
+    });
   });
 
   /**
