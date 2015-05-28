@@ -15,7 +15,7 @@
   },
   "semistandard": {
     "ignore": [
-      "./example*.js"
+      "examples/*.js"
     ]
   },
   "author": "Alexander Esp <alexjesp@gmail.com>",
